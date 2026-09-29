@@ -1,17 +1,18 @@
 import { expect, type Locator, type Page } from '@playwright/test';
+import { BasePage } from './BasePage';
 
-export class ProductsPage {
-  readonly page: Page;
-
+export class ProductsPage extends BasePage {
   readonly pageTitle: Locator;
   readonly products: Locator;
   readonly shoppingCart: Locator;
 
   constructor(page: Page) {
-    this.page = page;
+    super(page);
 
     this.pageTitle = page.getByText('Products');
+
     this.products = page.locator('.inventory_item');
+
     this.shoppingCart = page.locator('.shopping_cart_link');
   }
 
@@ -28,6 +29,6 @@ export class ProductsPage {
   }
 
   async openCart(): Promise<void> {
-    await this.shoppingCart.click();
+    await this.click(this.shoppingCart);
   }
 }

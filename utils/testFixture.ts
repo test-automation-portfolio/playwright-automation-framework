@@ -1,15 +1,13 @@
-import { test as base, expect, type Page } from '@playwright/test';
+import { test as base, expect, type APIRequestContext } from '@playwright/test';
 
 import { LoginPage } from '../pages/LoginPage';
 import { ProductsPage } from '../pages/ProductsPage';
 import { ApiClient } from '../utils/apiClient';
-import { config } from '../config/environment';
 
 type TestFixtures = {
   loginPage: LoginPage;
   productsPage: ProductsPage;
   apiClient: ApiClient;
-  authenticatedPage: Page;
 };
 
 export const test = base.extend<TestFixtures>({
@@ -26,24 +24,9 @@ export const test = base.extend<TestFixtures>({
   },
 
   apiClient: async ({ request }, use) => {
-    const apiClient = new ApiClient(request);
+    const apiClient = new ApiClient(request as APIRequestContext);
 
     await use(apiClient);
-  },
-
-  authenticatedPage: async ({ page }, use) => {
-    const loginPage = new LoginPage(page);
-
-    await loginPage.navigate();
-
-    await loginPage.login(
-      config.credentials.username,
-      config.credentials.password,
-    );
-
-    await page.waitForURL(/inventory/);
-
-    await use(page);
   },
 });
 

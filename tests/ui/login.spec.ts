@@ -22,13 +22,8 @@ test.describe('Login', () => {
     await productsPage.assertProductsDisplayed();
   });
 
-  test('user cannot login with invalid credentials', async ({
-    loginPage,
-  }) => {
-    await loginPage.login(
-      'invalid_user',
-      'invalid_password',
-    );
+  test('user cannot login with invalid credentials', async ({ loginPage }) => {
+    await loginPage.login('invalid_user', 'invalid_password');
 
     await loginPage.assertLoginErrorVisible();
   });
