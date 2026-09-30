@@ -4,12 +4,14 @@ import { LoginPage } from '../pages/LoginPage';
 import { ProductsPage } from '../pages/ProductsPage';
 import { ApiClient } from '../utils/apiClient';
 import { config } from '../config/environment';
+import { UserService } from '../tests/api/services/UserService';
 
 type TestFixtures = {
   loginPage: LoginPage;
   productsPage: ProductsPage;
   apiClient: ApiClient;
   authenticatedPage: Page;
+  userService: UserService;
 };
 
 export const test = base.extend<TestFixtures>({
@@ -30,6 +32,11 @@ export const test = base.extend<TestFixtures>({
 
     await use(apiClient);
   },
+  userService: async ({ apiClient }, use) => {
+  const userService = new UserService(apiClient);
+
+  await use(userService);
+},
 
   authenticatedPage: async ({ page }, use) => {
     const loginPage = new LoginPage(page);

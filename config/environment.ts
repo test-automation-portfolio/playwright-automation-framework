@@ -35,4 +35,8 @@ export const config = {
     username: process.env.TEST_USERNAME || '',
     password: process.env.TEST_PASSWORD || '',
   },
+
+  api: {
+    token: process.env.API_TOKEN || '',
+  },
 };

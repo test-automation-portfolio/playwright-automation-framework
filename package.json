@@ -28,6 +28,7 @@
     "typescript-eslint": "^8.71.0"
   },
   "dependencies": {
-    "dotenv": "^18.0.4"
+    "dotenv": "^18.0.4",
+    "zod": "^4.6.5"
   }
 }

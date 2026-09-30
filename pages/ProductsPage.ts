@@ -32,3 +32,4 @@ export class ProductsPage extends BasePage {
     await this.click(this.shoppingCart);
   }
 }
+
