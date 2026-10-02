@@ -1,3 +1,4 @@
+
 # Playwright Automation Framework
 
 A scalable end-to-end test automation framework built with **Playwright** and **TypeScript**, covering UI, API, and API/UI integration testing.
@@ -469,3 +470,6 @@ This project demonstrates practical experience in:
 ## 📄 License
 
 This project is intended for educational and portfolio purposes.
+
+
+
